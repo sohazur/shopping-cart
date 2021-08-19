@@ -1,20 +1,18 @@
-function addition(itemSerial, itemNum) {
+function updateItemNum(itemSerial, itemNum, isIncreasing) {
   document.getElementById(itemSerial).addEventListener("click", () => {
-    document.getElementById(itemNum).value =
-      parseInt(document.getElementById(itemNum).value) + 1;
-  });
-}
-
-function substraction(itemSerial, itemNum) {
-  document.getElementById(itemSerial).addEventListener("click", () => {
-    if (parseInt(document.getElementById(itemNum).value) > 0) {
+    if (isIncreasing) {
       document.getElementById(itemNum).value =
-        parseInt(document.getElementById(itemNum).value) - 1;
+        parseInt(document.getElementById(itemNum).value) + 1;
+    } else {
+      if (parseInt(document.getElementById(itemNum).value) > 0) {
+        document.getElementById(itemNum).value =
+          parseInt(document.getElementById(itemNum).value) - 1;
+      }
     }
   });
 }
 
-addition("plusNum1", "itemNum1");
-addition("plusNum2", "itemNum2");
-substraction("minusNum1", "itemNum1");
-substraction("minusNum2", "itemNum2");
+updateItemNum("plusNum1", "itemNum1", true);
+updateItemNum("plusNum2", "itemNum2", true);
+updateItemNum("minusNum1", "itemNum1", false);
+updateItemNum("minusNum2", "itemNum2", false);
